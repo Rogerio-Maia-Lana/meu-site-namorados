@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Feliz Dia dos Namorados</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      color: #fff;
+      padding: 50px;
+      overflow-x: hidden; /* Corrigido para permitir scroll vertical */
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 0;
+    }
+    h2 {
+      margin-top: 0;
+      font-weight: normal;
+    }
+    .photo img {
+      max-width: 300px;
+      border-radius: 20px;
+      border: 5px solid #fff;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      margin-top: 30px;
+    }
+    .message {
+      margin-top: 40px;
+      font-size: 1.2em;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 20px;
+      border-radius: 15px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .music {
+      margin-top: 40px;
+    }
+    .timer {
+      margin-top: 40px;
+      font-size: 1.3em;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 15px;
+      border-radius: 10px;
+      display: inline-block;
+    }
+
+    /* EFEITO DE CHUVA DE CORAÇÕES */
+    .heart {
+      position: fixed;
+      top: -20px;
+      font-size: 24px;
+      color: rgba(255, 0, 127, 0.7);
+      animation: fall linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Feliz Dia dos Namorados</h1>
+  <h2>Rogério ❤️ Naty</h2>
+
+  <div class="photo">
+    <img src="4a2c6d2a-3944-4838-8583-48a405e42390.jpeg" alt="Nossa foto">
+  </div>
+
+  <div class="message">
+    <p>Meu amor, cada dia ao seu lado é um presente. Obrigado por ser minha companheira, minha amiga e meu coração. Te amo mais do que palavras podem expressar. 💖</p>
+  </div>
+
+  <div class="timer">
+    <p>Estamos juntos há:</p>
+    <div id="contador"></div>
+  </div>
+
+  <div class="music">
+    <p>Nossa música:</p>
+    <iframe style="border-radius:12px" 
+            src="https://open.spotify.com/embed/track/7MQJYm0QPF2Vf0UtzKapSc?utm_source=generator" 
+            width="300" height="80" frameborder="0" 
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+            loading="lazy">
+    </iframe>
+  </div>
+
+  <script>
+    // CRONÔMETRO
+    const inicioRelacionamento = new Date('2025-02-20T20:23:33');
+
+    function atualizarContador() {
+      const agora = new Date();
+      let diff = agora - inicioRelacionamento;
+
+      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+      diff -= dias * (1000 * 60 * 60 * 24);
+
+      const horas = Math.floor(diff / (1000 * 60 * 60));
+      diff -= horas * (1000 * 60 * 60);
+
+      const minutos = Math.floor(diff / (1000 * 60));
+      diff -= minutos * (1000 * 60);
+
+      const segundos = Math.floor(diff / 1000);
+
+      document.getElementById("contador").innerHTML =
+        `${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos`;
+    }
+
+    setInterval(atualizarContador, 1000);
+    atualizarContador();
+
+    // CHUVA DE CORAÇÕES
+    function criarCoracao() {
+      const coracao = document.createElement('div');
+      coracao.classList.add('heart');
+      coracao.style.left = Math.random() * 100 + "vw";
+      coracao.style.animationDuration = (2 + Math.random() * 3) + "s";
+      coracao.innerText = "❤️";
+      document.body.appendChild(coracao);
+
+      setTimeout(() => {
+        coracao.remove();
+      }, 5000);
+    }
+
+    setInterval(criarCoracao, 300);
+  </script>
+
+</body>
+</html>
