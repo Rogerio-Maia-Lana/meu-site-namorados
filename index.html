@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Feliz Dia dos Namorados</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     body {
       background: linear-gradient(to right, #ff9a9e, #fad0c4);
       font-family: 'Arial', sans-serif;
       text-align: center;
       color: #fff;
-      padding: 50px;
+      padding: 50px 20px;
       overflow-x: hidden;
     }
     h1 {
@@ -20,12 +21,23 @@
       margin-top: 0;
       font-weight: normal;
     }
-    .photo img {
-      max-width: 300px;
+    .carousel {
+      max-width: 320px;
+      margin: 30px auto;
+      position: relative;
       border-radius: 20px;
       border: 5px solid #fff;
       box-shadow: 0 0 15px rgba(0,0,0,0.3);
-      margin-top: 30px;
+      overflow: hidden;
+    }
+    .carousel img {
+      width: 100%;
+      border-radius: 20px;
+      display: none;
+      user-select: none;
+    }
+    .carousel img.active {
+      display: block;
     }
     .message {
       margin-top: 40px;
@@ -39,6 +51,15 @@
     }
     .music {
       margin-top: 40px;
+      max-width: 320px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .music iframe {
+      width: 100% !important;
+      height: 80px;
+      border-radius: 12px;
+      border: 0;
     }
     .timer {
       margin-top: 40px;
@@ -47,6 +68,8 @@
       padding: 15px;
       border-radius: 10px;
       display: inline-block;
+      max-width: 90vw;
+      word-wrap: break-word;
     }
     .heart {
       position: fixed;
@@ -62,6 +85,32 @@
         opacity: 0;
       }
     }
+
+    /* Responsividade */
+    @media (max-width: 480px) {
+      body {
+        padding: 30px 15px;
+      }
+      h1 {
+        font-size: 2.2em;
+      }
+      h2 {
+        font-size: 1.2em;
+      }
+      .message {
+        font-size: 1em;
+        padding: 15px;
+        max-width: 100%;
+      }
+      .timer {
+        font-size: 1.1em;
+        padding: 12px;
+      }
+      .carousel {
+        max-width: 90vw;
+        border-width: 3px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -69,29 +118,38 @@
   <h1>Feliz Dia dos Namorados</h1>
   <h2>Rogério ❤️ Naty</h2>
 
-  <div class="photo">
-    <img src="4a2c6d2a-3944-4838-8583-48a405e42390.jpeg" alt="Nossa foto">
+  <!-- Música primeiro -->
+  <div class="music">
+    <iframe
+      src="https://open.spotify.com/embed/track/1lg7G5zyf8apcquXJ7iPYR"
+      width="300"
+      height="80"
+      frameborder="0"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy">
+    </iframe>
   </div>
 
-  <div class="message">
-    <p>Desde aquele nosso primeiro beijo na escada, minha vida virou um “quero mais” de você. Quem diria que uns degrauzinhos iam marcar tanto? Te juro, foi ali que meu coração tropeçou — e caiu direitinho no teu. Te amo demais, sua doida linda!💖</p>
+  <!-- Carrossel de fotos -->
+  <div class="carousel">
+    <img src="4a2c6d2a-3944-4838-8583-48a405e42390.jpeg" alt="Foto 1" class="active" />
+    <img src="foto2.jpeg" alt="Foto 2" />
+    <img src="foto3.jpeg" alt="Foto 3" />
   </div>
 
+  <!-- Contador -->
   <div class="timer">
     <p>Estamos juntos há:</p>
     <div id="contador"></div>
   </div>
 
-  <div class="music">
-    <iframe style="border-radius:12px" 
-      src="https://open.spotify.com/embed/track/1lg7G5zyf8apcquXJ7iPYR" 
-      width="300" height="80" frameborder="0" 
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-      loading="lazy">
-    </iframe>
+  <!-- Mensagem romântica -->
+  <div class="message">
+    <p>Desde aquele nosso primeiro beijo na escada, minha vida virou um “quero mais” de você. Quem diria que uns degrauzinhos iam marcar tanto? Te juro, foi ali que meu coração tropeçou — e caiu direitinho no teu. Te amo demais, sua doida linda!💖</p>
   </div>
 
   <script>
+    // Contador de tempo juntos
     const inicioRelacionamento = new Date('2025-02-20T20:23:33');
     function atualizarContador() {
       const agora = new Date();
@@ -109,6 +167,17 @@
     setInterval(atualizarContador, 1000);
     atualizarContador();
 
+    // Carrossel automático
+    const fotos = document.querySelectorAll('.carousel img');
+    let indiceAtual = 0;
+    function trocarFoto() {
+      fotos[indiceAtual].classList.remove('active');
+      indiceAtual = (indiceAtual + 1) % fotos.length;
+      fotos[indiceAtual].classList.add('active');
+    }
+    setInterval(trocarFoto, 3000); // troca a cada 3 segundos
+
+    // Animação dos corações
     function criarCoracao() {
       const coracao = document.createElement('div');
       coracao.classList.add('heart');
