@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Feliz Dia dos Namorados</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Nunito&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
       background: #000;
@@ -26,6 +26,7 @@
       font-weight: normal;
       font-size: 1.8em;
     }
+
     .carousel {
       max-width: 320px;
       margin: 30px auto;
@@ -44,6 +45,7 @@
     .carousel img.active {
       display: block;
     }
+
     .message {
       margin-top: 40px;
       font-size: 1.2em;
@@ -54,8 +56,11 @@
       margin-left: auto;
       margin-right: auto;
       backdrop-filter: blur(6px);
+      border: 3px solid #ff69b4;
+      box-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
       font-family: 'Nunito', sans-serif;
     }
+
     .music {
       margin-top: 40px;
       max-width: 320px;
@@ -68,6 +73,7 @@
       border-radius: 12px;
       border: 0;
     }
+
     .timer {
       margin-top: 40px;
       font-size: 1.3em;
@@ -79,7 +85,10 @@
       word-wrap: break-word;
       backdrop-filter: blur(6px);
       font-family: 'Nunito', sans-serif;
+      border: 3px solid #ff69b4;
+      box-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
     }
+
     .heart {
       position: fixed;
       top: -20px;
@@ -88,6 +97,7 @@
       animation: fall linear infinite;
       z-index: 0;
     }
+
     @keyframes fall {
       to {
         transform: translateY(100vh) rotate(360deg);
@@ -95,6 +105,7 @@
       }
     }
 
+    /* Responsivo para celular */
     @media (max-width: 480px) {
       body {
         padding: 30px 15px;
@@ -130,6 +141,9 @@
   <div class="music">
     <iframe
       src="https://open.spotify.com/embed/track/1lg7G5zyf8apcquXJ7iPYR"
+      width="300"
+      height="80"
+      frameborder="0"
       allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
       loading="lazy">
     </iframe>
