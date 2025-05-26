@@ -3,130 +3,103 @@
 <head>
   <meta charset="UTF-8" />
   <title>Feliz Dia dos Namorados</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
       background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-      font-family: 'Comic Sans MS', 'Comic Sans', cursive, 'Segoe Script', cursive;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
       text-align: center;
       color: #fff;
-      padding: 50px 20px;
+      padding: 30px 15px;
+      margin: 0;
       overflow-x: hidden;
-      min-height: 100vh;
-      box-sizing: border-box;
-      position: relative;
     }
+
     h1 {
-      font-size: 3em;
-      margin-bottom: 0;
-      text-shadow: 0 0 8px #ff4b81;
+      font-size: 2.5em;
+      margin: 10px 0 0;
+      text-shadow: 0 0 10px #ff4b81;
     }
+
     h2 {
-      margin-top: 0;
       font-weight: normal;
-      font-family: 'Segoe Script', cursive, 'Comic Sans MS', cursive;
-      text-shadow: 0 0 5px #ff4b81;
+      font-family: 'Segoe Script', cursive;
+      text-shadow: 0 0 6px #ff4b81;
     }
+
     .music {
-      margin-top: 0;
-      margin-bottom: 40px;
+      margin: 20px 0 40px;
     }
-    .photo {
+
+    .carousel-container {
       position: relative;
-      width: 300px;
+      width: 90vw;
+      max-width: 300px;
       margin: 0 auto 40px;
-      border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 0 25px rgba(255, 75, 129, 0.7);
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(255, 75, 129, 0.6);
     }
-    .carousel img {
+
+    .carousel-container img {
       width: 100%;
       display: none;
-      border: 5px solid #fff;
       border-radius: 20px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.5);
-      position: absolute;
-      top: 0;
-      left: 0;
-      transition: opacity 1s ease;
     }
-    .carousel img.active {
+
+    .carousel-container img.active {
       display: block;
-      opacity: 1;
-      animation: zoomLeve 4s ease-in-out infinite alternate;
-      position: relative;
+      animation: fade 1s ease-in-out;
     }
-    @keyframes zoomLeve {
-      from { transform: scale(1); }
-      to { transform: scale(1.03); }
+
+    @keyframes fade {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
+
     .timer {
-      margin-top: 0;
-      font-size: 1.3em;
+      font-size: 1.2em;
       background: rgba(0, 0, 0, 0.3);
-      padding: 15px 25px;
+      padding: 15px 20px;
       border-radius: 10px;
       display: inline-block;
       box-shadow: 0 0 10px #ff4b81;
       font-family: 'Segoe Script', cursive;
-      user-select: none;
+      margin-bottom: 30px;
     }
+
     .message {
-      margin-top: 40px;
-      font-size: 1.3em;
-      background: rgba(255, 75, 129, 0.15);
-      padding: 25px 30px;
+      font-size: 1.2em;
+      background: rgba(255, 75, 129, 0.1);
+      padding: 20px;
       border-radius: 15px;
       max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      box-shadow: 0 0 15px #ff4b81;
-      font-family: 'Comic Sans MS', cursive;
-      line-height: 1.4;
-      user-select: none;
+      margin: 0 auto;
+      box-shadow: 0 0 10px #ff4b81;
+      line-height: 1.5;
     }
-    /* Hearts falling animation */
+
     .heart {
       position: fixed;
       top: -20px;
       font-size: 24px;
       color: rgba(255, 0, 127, 0.7);
       animation: fall linear infinite;
-      z-index: 0;
-      user-select: none;
+      z-index: 999;
+      pointer-events: none;
     }
+
     @keyframes fall {
       to {
         transform: translateY(100vh) rotate(360deg);
         opacity: 0;
       }
     }
-    /* Responsive */
+
     @media (max-width: 400px) {
-      body {
-        padding: 30px 15px;
-      }
-      h1 {
-        font-size: 2.2em;
-      }
-      .photo {
-        width: 90vw;
-      }
-      .carousel img {
-        border-width: 3px;
-      }
-      .message {
-        font-size: 1.1em;
-        padding: 15px 20px;
-        max-width: 90vw;
-      }
-      .timer {
-        font-size: 1.1em;
-        padding: 10px 15px;
-      }
-      .music iframe {
-        width: 100% !important;
-        height: 80px !important;
-      }
+      h1 { font-size: 2em; }
+      .message { font-size: 1em; }
+      .timer { font-size: 1em; }
     }
   </style>
 </head>
@@ -136,36 +109,40 @@
   <h2>Rogério ❤️ Naty</h2>
 
   <div class="music">
-    <iframe style="border-radius:12px"
-      src="https://open.spotify.com/embed/track/1lg7G5zyf8apcquXJ7iPYR"
-      width="300" height="80" frameborder="0"
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+    <iframe style="border-radius:12px" 
+      src="https://open.spotify.com/embed/track/1lg7G5zyf8apcquXJ7iPYR" 
+      width="300" height="80" frameborder="0" 
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
       loading="lazy">
     </iframe>
   </div>
 
-  <div class="photo">
-    <div class="carousel">
-      <img src="4a2c6d2a-3944-4838-8583-48a405e42390.jpeg" class="active" alt="Foto 1" />
-      <img src="IMG_2374.jpeg" alt="Foto 2" />
-      <img src="IMG_1195.jpeg" alt="Foto 3" />
-    </div>
+  <div class="carousel-container">
+    <img src="4a2c6d2a-3944-4838-8583-48a405e42390.jpeg" class="active" alt="Foto 1">
+    <img src="IMG_2374.jpeg" alt="Foto 2">
+    <img src="IMG_1195.jpeg" alt="Foto 3">
   </div>
 
   <div class="timer">
     <p>Estamos juntos há:</p>
-    <div id="contador"></div>
+    <div id="contador">Carregando...</div>
   </div>
 
   <div class="message">
-    <p>Desde aquele nosso primeiro beijo na escada, minha vida virou um “quero mais” de você. Quem diria que uns degrauzinhos iam marcar tanto? Te juro, foi ali que meu coração tropeçou — e caiu direitinho no teu. Te amo demais, sua doida linda!💖</p>
+    <p>Desde aquele nosso primeiro beijo na escada, minha vida virou um “quero mais” de você. Quem diria que uns degrauzinhos iam marcar tanto? Te juro, foi ali que meu coração tropeçou — e caiu direitinho no teu. Te amo demais, sua doida linda! 💖</p>
   </div>
 
-  <!-- Canvas para fogos de artifício -->
-  <canvas id="canvasFogos" style="position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:10;"></canvas>
-
   <script>
-    // Contador do tempo juntos
+    // Carrossel automático
+    const imagens = document.querySelectorAll('.carousel-container img');
+    let index = 0;
+    setInterval(() => {
+      imagens[index].classList.remove('active');
+      index = (index + 1) % imagens.length;
+      imagens[index].classList.add('active');
+    }, 4000);
+
+    // Contador de tempo
     const inicioRelacionamento = new Date('2025-02-20T20:23:33');
     function atualizarContador() {
       const agora = new Date();
@@ -177,23 +154,13 @@
       const minutos = Math.floor(diff / (1000 * 60));
       diff -= minutos * (1000 * 60);
       const segundos = Math.floor(diff / 1000);
-      document.getElementById("contador").innerHTML =
+      document.getElementById("contador").innerText =
         `${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos`;
     }
     setInterval(atualizarContador, 1000);
     atualizarContador();
 
-    // Carrossel automático de fotos
-    const imagens = document.querySelectorAll('.carousel img');
-    let index = 0;
-    function trocarImagem() {
-      imagens[index].classList.remove('active');
-      index = (index + 1) % imagens.length;
-      imagens[index].classList.add('active');
-    }
-    setInterval(trocarImagem, 4000); // troca a cada 4 segundos
-
-    // Corações caindo suavemente
+    // Corações caindo
     function criarCoracao() {
       const coracao = document.createElement('div');
       coracao.classList.add('heart');
@@ -201,52 +168,10 @@
       coracao.style.animationDuration = (2 + Math.random() * 3) + "s";
       coracao.innerText = "❤️";
       document.body.appendChild(coracao);
-      setTimeout(() => { coracao.remove(); }, 5000);
+      setTimeout(() => coracao.remove(), 5000);
     }
     setInterval(criarCoracao, 300);
+  </script>
 
-    // Fogos de artifício em forma de coração no final da página
-    const canvas = document.getElementById("canvasFogos");
-    const ctx = canvas.getContext("2d");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    let particles = [];
-    function createHeart(x, y) {
-      for (let i = 0; i < 20; i++) {
-        particles.push({
-          x: x,
-          y: y,
-          size: Math.random() * 4 + 2,
-          speedX: (Math.random() - 0.5) * 6,
-          speedY: (Math.random() - 0.5) * 6,
-          opacity: 1
-        });
-      }
-    }
-    function draw() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach((p, index) => {
-        ctx.fillStyle = `rgba(255, 100, 150, ${p.opacity})`;
-        ctx.beginPath();
-        ctx.moveTo(p.x, p.y);
-        ctx.bezierCurveTo(p.x - 5, p.y - 5, p.x - 5, p.y + 10, p.x, p.y + 10);
-        ctx.bezierCurveTo(p.x + 5, p.y + 10, p.x + 5, p.y - 5, p.x, p.y);
-        ctx.fill();
-        p.x += p.speedX;
-        p.y += p.speedY;
-        p.opacity -= 0.02;
-        if (p.opacity <= 0) {
-          particles.splice(index, 1);
-        }
-      });
-      requestAnimationFrame(draw);
-    }
-    draw();
-    let shown = false;
-    window.addEventListener('scroll', () => {
-      if (!shown && (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) {
-        const centerX = canvas.width / 2;
-        const centerY = canvas.height / 2;
-        createHeart(centerX, centerY);
-        setTimeout(() => createHeart(centerX + 100, centerY - 50), 300);
-        setTimeout(() => createHeart(centerX - 100
+</body>
+</html>
