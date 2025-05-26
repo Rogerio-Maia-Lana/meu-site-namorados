@@ -3,92 +3,89 @@
 <head>
   <meta charset="UTF-8" />
   <title>Feliz Dia dos Namorados</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Quicksand&display=swap" rel="stylesheet">
   <style>
     body {
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(to bottom, #111, #000);
+      font-family: 'Quicksand', sans-serif;
       text-align: center;
       color: #fff;
-      padding: 30px 15px;
-      margin: 0;
+      padding: 50px 20px;
       overflow-x: hidden;
     }
-
+    h1, h2 {
+      font-family: 'Dancing Script', cursive;
+    }
     h1 {
-      font-size: 2.5em;
-      margin: 10px 0 0;
-      text-shadow: 0 0 10px #ff4b81;
+      font-size: 3em;
+      margin-bottom: 0;
     }
-
     h2 {
+      margin-top: 0;
       font-weight: normal;
-      font-family: 'Segoe Script', cursive;
-      text-shadow: 0 0 6px #ff4b81;
+      font-size: 1.8em;
     }
-
-    .music {
-      margin: 20px 0 40px;
-    }
-
-    .carousel-container {
+    .carousel {
+      max-width: 320px;
+      margin: 30px auto;
       position: relative;
-      width: 90vw;
-      max-width: 300px;
-      margin: 0 auto 40px;
+      border-radius: 20px;
+      border: 4px solid #ff69b4;
+      box-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
       overflow: hidden;
-      border-radius: 20px;
-      box-shadow: 0 0 15px rgba(255, 75, 129, 0.6);
     }
-
-    .carousel-container img {
+    .carousel img {
       width: 100%;
-      display: none;
       border-radius: 20px;
+      display: none;
+      user-select: none;
     }
-
-    .carousel-container img.active {
+    .carousel img.active {
       display: block;
-      animation: fade 1s ease-in-out;
     }
-
-    @keyframes fade {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    .timer {
-      font-size: 1.2em;
-      background: rgba(0, 0, 0, 0.3);
-      padding: 15px 20px;
-      border-radius: 10px;
-      display: inline-block;
-      box-shadow: 0 0 10px #ff4b81;
-      font-family: 'Segoe Script', cursive;
-      margin-bottom: 30px;
-    }
-
     .message {
+      margin-top: 40px;
       font-size: 1.2em;
-      background: rgba(255, 75, 129, 0.1);
+      background: rgba(255, 255, 255, 0.05);
       padding: 20px;
       border-radius: 15px;
       max-width: 600px;
-      margin: 0 auto;
-      box-shadow: 0 0 10px #ff4b81;
-      line-height: 1.5;
+      margin-left: auto;
+      margin-right: auto;
+      backdrop-filter: blur(6px);
     }
-
+    .music {
+      margin-top: 40px;
+      max-width: 320px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .music iframe {
+      width: 100% !important;
+      height: 80px;
+      border-radius: 12px;
+      border: 0;
+    }
+    .timer {
+      margin-top: 40px;
+      font-size: 1.3em;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 15px;
+      border-radius: 10px;
+      display: inline-block;
+      max-width: 90vw;
+      word-wrap: break-word;
+      backdrop-filter: blur(6px);
+    }
     .heart {
       position: fixed;
       top: -20px;
       font-size: 24px;
-      color: rgba(255, 0, 127, 0.7);
+      color: rgba(255, 105, 180, 0.7);
       animation: fall linear infinite;
-      z-index: 999;
-      pointer-events: none;
+      z-index: 0;
     }
-
     @keyframes fall {
       to {
         transform: translateY(100vh) rotate(360deg);
@@ -96,10 +93,30 @@
       }
     }
 
-    @media (max-width: 400px) {
-      h1 { font-size: 2em; }
-      .message { font-size: 1em; }
-      .timer { font-size: 1em; }
+    /* Responsividade */
+    @media (max-width: 480px) {
+      body {
+        padding: 30px 15px;
+      }
+      h1 {
+        font-size: 2.2em;
+      }
+      h2 {
+        font-size: 1.4em;
+      }
+      .message {
+        font-size: 1em;
+        padding: 15px;
+        max-width: 100%;
+      }
+      .timer {
+        font-size: 1.1em;
+        padding: 12px;
+      }
+      .carousel {
+        max-width: 90vw;
+        border-width: 3px;
+      }
     }
   </style>
 </head>
@@ -108,41 +125,38 @@
   <h1>Feliz Dia dos Namorados</h1>
   <h2>Rogério ❤️ Naty</h2>
 
+  <!-- Música -->
   <div class="music">
-    <iframe style="border-radius:12px" 
-      src="https://open.spotify.com/embed/track/1lg7G5zyf8apcquXJ7iPYR" 
-      width="300" height="80" frameborder="0" 
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+    <iframe
+      src="https://open.spotify.com/embed/track/1lg7G5zyf8apcquXJ7iPYR"
+      width="300"
+      height="80"
+      frameborder="0"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
       loading="lazy">
     </iframe>
   </div>
 
-  <div class="carousel-container">
-    <img src="4a2c6d2a-3944-4838-8583-48a405e42390.jpeg" class="active" alt="Foto 1">
-    <img src="IMG_2374.jpeg" alt="Foto 2">
-    <img src="IMG_1195.jpeg" alt="Foto 3">
+  <!-- Carrossel de fotos -->
+  <div class="carousel">
+    <img src="4a2c6d2a-3944-4838-8583-48a405e42390.jpeg" alt="Foto 1" class="active" />
+    <img src="IMG_2374.jpeg" alt="Foto 2" />
+    <img src="IMG_1195.jpeg" alt="Foto 3" />
   </div>
 
+  <!-- Contador -->
   <div class="timer">
     <p>Estamos juntos há:</p>
-    <div id="contador">Carregando...</div>
+    <div id="contador"></div>
   </div>
 
+  <!-- Mensagem romântica -->
   <div class="message">
-    <p>Desde aquele nosso primeiro beijo na escada, minha vida virou um “quero mais” de você. Quem diria que uns degrauzinhos iam marcar tanto? Te juro, foi ali que meu coração tropeçou — e caiu direitinho no teu. Te amo demais, sua doida linda! 💖</p>
+    <p>Desde aquele nosso primeiro beijo na escada, minha vida virou um “quero mais” de você. Quem diria que uns degrauzinhos iam marcar tanto? Te juro, foi ali que meu coração tropeçou — e caiu direitinho no teu. Te amo demais, sua doida linda!💖</p>
   </div>
 
   <script>
-    // Carrossel automático
-    const imagens = document.querySelectorAll('.carousel-container img');
-    let index = 0;
-    setInterval(() => {
-      imagens[index].classList.remove('active');
-      index = (index + 1) % imagens.length;
-      imagens[index].classList.add('active');
-    }, 4000);
-
-    // Contador de tempo
+    // Contador
     const inicioRelacionamento = new Date('2025-02-20T20:23:33');
     function atualizarContador() {
       const agora = new Date();
@@ -154,13 +168,23 @@
       const minutos = Math.floor(diff / (1000 * 60));
       diff -= minutos * (1000 * 60);
       const segundos = Math.floor(diff / 1000);
-      document.getElementById("contador").innerText =
+      document.getElementById("contador").innerHTML =
         `${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos`;
     }
     setInterval(atualizarContador, 1000);
     atualizarContador();
 
-    // Corações caindo
+    // Carrossel
+    const fotos = document.querySelectorAll('.carousel img');
+    let indiceAtual = 0;
+    function trocarFoto() {
+      fotos[indiceAtual].classList.remove('active');
+      indiceAtual = (indiceAtual + 1) % fotos.length;
+      fotos[indiceAtual].classList.add('active');
+    }
+    setInterval(trocarFoto, 3000);
+
+    // Corações
     function criarCoracao() {
       const coracao = document.createElement('div');
       coracao.classList.add('heart');
@@ -168,7 +192,7 @@
       coracao.style.animationDuration = (2 + Math.random() * 3) + "s";
       coracao.innerText = "❤️";
       document.body.appendChild(coracao);
-      setTimeout(() => coracao.remove(), 5000);
+      setTimeout(() => { coracao.remove(); }, 5000);
     }
     setInterval(criarCoracao, 300);
   </script>
